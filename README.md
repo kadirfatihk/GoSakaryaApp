@@ -1,49 +1,64 @@
-GoSakaryaApp - Sakarya'nın Kalbinde Bir Uygulama
-Giriş
-GoSakaryaApp, Sakarya'daki gezilecek yerler ve etkinlikler hakkında kapsamlı bir bilgi sunmayı amaçlayan, ASP.NET, C# ve Entity Framework teknolojileri kullanılarak geliştirilmiş bir web uygulamasıdır. Kullanıcılar, uygulama sayesinde şehirdeki tüm etkinliklere göz atabilir, bilet satın alabilir, gezilecek yerler hakkında detaylı bilgi alabilir ve yorum yapabilirler.
+# GoSakaryaApp - Sakarya'nın Kalbinde Bir Uygulama
 
-Özellikler
-Kullanıcı Rolleri: Uygulama, admin ve visitor olmak üzere iki farklı kullanıcı rolüne sahiptir.
-Admin:
-Konum ve etkinlik ekleme, silme, güncelleme (POST, PATCH, PUT, DELETE)
-Kullanıcı yorumlarını silme
-Uygulamayı bakım moduna alma (middleware)
-Visitor:
-Konum ve etkinlik listeleme
-Yorum yapma
-Etkinliklere bilet alma (kullanıcı başına bir bilet)
-Güvenlik:
-Yetkilendirme: JWT (JSON Web Token) mekanizması ile kullanıcı yetkilendirme işlemleri gerçekleştirilmektedir.
-Şifreleme: Veri güvenliği için DataProtection kullanılmaktadır.
-Zaman Kısıtlamaları: ActionFilter ve TimeFilter attribute'leri ile konum ve etkinlik ekleme işlemlerine zaman kısıtlamaları getirilmiştir.
-Veritabanı: Entity Framework ile veritabanı bağlantısı kurulmuştur.
-Performans: ServiceLifetimes ile hizmetlerin ömrü yönetilerek performans optimize edilmiştir.
-Teknolojiler ve Desenler
-ASP.NET: Web uygulaması geliştirme çerçevesi
-C#: Programlama dili
-Entity Framework: Veritabanı erişim katmanı
-JWT: Kullanıcı yetkilendirme
-DataProtection: Veri şifreleme
-ActionFilter, TimeFilter: HTTP isteklerini filtreleme ve zamanlama
-DTO (Data Transfer Object): Veri transferi için kullanılan hafif nesneler
-Entities: Veritabanı tablolarına karşılık gelen nesneler
-RequestModel: Kullanıcı isteklerini temsil eden nesneler
-UnitOfWork: Birden fazla veri erişim işlemini tek bir transaction içinde yöneten tasarım deseni
-Repository: Veritabanı erişim işlemlerini kapsular
-Proje Yapısı
-Controllers: HTTP isteklerini işleyen ve uygun aksiyonları gerçekleştiren sınıflar
-Models:
-Entities: Veritabanı tablolarına karşılık gelen C# sınıfları
-DTOs: Veri transfer nesneleri
-RequestModels: Kullanıcı isteklerini temsil eden nesneler
-Services: İş mantığını içeren sınıflar
-Data: Veritabanı erişim katmanı
-Repositories: Veritabanı işlemlerini yapan sınıflar
-UnitOfWork: Birden fazla veri erişim işlemini yöneten sınıf
-Filters: HTTP isteklerini filtreleyen attribute'ler
-Neden Bu Desenler Kullanıldı?
-Bakım kolaylığı: Kodun farklı katmanlara ayrılması, değişikliklerin daha kolay yapılabilmesini sağlar.
-Test edilebilirlik: Her katman ayrı ayrı test edilebilir.
-Veri erişiminden soyutlama: İş mantığı, veritabanı detaylarından bağımsız hale gelir.
-Performans: Gerekli verilerin sadece gönderilmesi, performansı artırır.
-Güvenlik: Hassas bilgilerin doğrudan client'a gönderilmesi engellenir.
+GoSakaryaApp, Sakarya'daki gezilecek yerler ve etkinlikler hakkında kapsamlı bilgi sunan bir ASP.NET web uygulamasıdır. Kullanıcılar etkinlikleri keşfedebilir, bilet alabilir, mekanlar hakkında bilgi edinebilir ve yorum yapabilirler.
+
+## Özellikler
+
+* **Kullanıcı Rolleri:** Admin ve Visitor
+* **Etkinlik Yönetimi:** Etkinlik listeleme, bilgi görüntüleme, bilet alma
+* **Mekan Bilgisi:** Gezilmesi önerilen yerler hakkında detaylı bilgi
+* **Yorum Sistemi:** Kullanıcıların mekanlar ve etkinlikler hakkında yorum yapması
+* **Admin Paneli:** Konum ve etkinlik ekleme, silme, güncelleme (POST, PATCH, PUT, DELETE), kullanıcı yorumlarını silme, bakım modu
+
+## Teknolojiler
+
+* **ASP.NET Core:** Web uygulama çatısı
+* **C#:** Programlama dili
+* **Entity Framework Core:** Veritabanı erişim teknolojisi
+* **JWT (JSON Web Token):** Yetkilendirme
+* **Data Protection:** Veri şifreleme
+* **Swagger:** API dökümantasyonu (öneri)
+
+
+## Mimari
+
+Proje, temiz kod prensipleri ve katmanlı mimari göz önünde bulundurularak geliştirilmiştir.
+
+* **Controllers:** HTTP isteklerini yönetir.
+* **Models:**
+    * **Entities:** Veritabanı varlıkları.
+    * **DTOs (Data Transfer Objects):** Veri transferi için kullanılan nesneler.
+    * **RequestModels:** API isteklerini temsil eden nesneler.
+* **Services:** İş mantığını içerir.
+* **Data:** Veritabanı erişim katmanı.
+    * **Repositories:** Veritabanı işlemlerini soyutlar.
+    * **UnitOfWork:** Veritabanı işlemlerinin tutarlılığını sağlar.
+* **Filters:** `ActionFilter`, `TimeFilter` gibi filtreler ile HTTP istekleri üzerinde işlem yapar.  (Örneğin zaman kısıtlaması)
+* **Middleware:** Uygulama seviyesinde işlemler yapmak için kullanılır. (Örneğin bakım modu)
+
+
+## Desenler
+
+* **Repository Pattern:** Veri erişim mantığını soyutlar.
+* **Unit of Work Pattern:** Veritabanı işlemlerini tek bir birim olarak ele alır.
+* **DTO Pattern:** Veri transferini optimize eder ve güvenliği artırır.
+
+
+## Kurulum
+
+1. Projeyi klonlayın.
+2. Gerekli bağımlılıkları yükleyin.
+3. `appsettings.json` dosyasındaki veritabanı bağlantı ayarlarını yapılandırın.
+4. Veritabanı migrastonlarını çalıştırın.
+
+
+## İletişim
+
+[İletişim Bilgileri] (kadir.fatih96@gmail.com)
+
+
+## Ekran Görüntüleri (Opsiyonel)
+
+![Ekran Görüntüsü 1](C:\Users\kadir\OneDrive\Masaüstü\areas)
+![Ekran Görüntüsü 2](C:\Users\kadir\OneDrive\Masaüstü\auth_cpmments)
+![Ekran Görüntüsü 3](C:\Users\kadir\OneDrive\Masaüstü\event_ticket_settings)
