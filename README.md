@@ -57,8 +57,9 @@ Proje, temiz kod prensipleri ve katmanlı mimari göz önünde bulundurularak ge
 [İletişim Bilgileri] (kadir.fatih96@gmail.com)
 
 
-## Ekran Görüntüleri (Opsiyonel)
+## Ekran Görüntüleri
 
-![Ekran Görüntüsü 1](C:\Users\kadir\OneDrive\Masaüstü\areas)
-![Ekran Görüntüsü 2](C:\Users\kadir\OneDrive\Masaüstü\auth_cpmments)
-![Ekran Görüntüsü 3](C:\Users\kadir\OneDrive\Masaüstü\event_ticket_settings)
+![areas](https://github.com/user-attachments/assets/32d8a112-4fd2-44f1-96e6-fe1443563d90)
+![auth_comments](https://github.com/user-attachments/assets/8e669065-1f84-44d5-afbe-90116ce5f57d)
+![event_ticket_settings](https://github.com/user-attachments/assets/e80d4a34-1cf0-4fb3-87e6-d1ecd26cc3a9)
+
